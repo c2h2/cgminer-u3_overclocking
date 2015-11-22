@@ -1114,7 +1114,7 @@ static char *set_float_100_to_250(const char *arg, float *i)
 	if (err)
 		return err;
 
-	if (*i < 100 || *i > 250)
+	if (*i < 100 || *i > 400)
 		return "Value out of range";
 
 	return NULL;

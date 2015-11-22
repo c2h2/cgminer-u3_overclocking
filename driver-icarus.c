@@ -381,7 +381,7 @@ struct ICARUS_WORK {
 
 #define ANT_U1_DEFFREQ 200
 #define ANT_U3_DEFFREQ 225
-#define ANT_U3_MAXFREQ 250
+#define ANT_U3_MAXFREQ 400
 struct {
 	float freq;
 	uint16_t hex;
@@ -400,6 +400,11 @@ struct {
 	{ 237.5,	0x1286 },
 	{ 243.75,	0x1306 },
 	{ 250,		0x0982 },
+	{ 275,		0x0a82 },
+	{ 300,		0x0b82 },
+	{ 325,		0x0c82 },
+	{ 350,		0x0d82 },
+	{ 400,		0x08f2 },
 };
 
 #define END_CONDITION 0x0000ffff
@@ -1123,8 +1128,8 @@ static void set_anu_volt(struct cgpu_info *icarus)
 	/* Allow a zero setting to imply not to try and set voltage */
 	if (!opt_au3_volt)
 		return;
-	if (opt_au3_volt < 725 || opt_au3_volt > 850) {
-		applog(LOG_WARNING, "Invalid ANU voltage %d specified, must be 725-850", opt_au3_volt);
+	if (opt_au3_volt < 725 || opt_au3_volt > 1000) {
+		applog(LOG_WARNING, "Invalid ANU voltage %d specified, must be 725-1000", opt_au3_volt);
 		return;
 	}
 	sprintf(volt_buf, "%04d", opt_au3_volt);
